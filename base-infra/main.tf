@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "gcs" {
-    bucket = "${var.project_id}-tfstate"
+    bucket = "eca-team-summit-tfstate"
     prefix = "dev"
   }
 }
