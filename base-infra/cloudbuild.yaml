@@ -12,3 +12,15 @@ steps:
         echo "*************************************************"
         terraform init
         terraform plan -var 'project_id=$PROJECT_ID'
+  - id: 'tf apply'
+    name: 'hashicorp/terraform:1.0.0'
+    entrypoint: 'sh'
+    args:
+    - '-c'
+    - |
+        set -e
+        cd "base-infra"
+        echo ""
+        echo "*************** TERRAFORM APPLY ******************"
+        echo "*************************************************"
+        terraform apply -var 'project_id=$PROJECT_ID' -auto-approve
