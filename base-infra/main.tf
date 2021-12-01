@@ -14,6 +14,10 @@ terraform {
 
 data "google_project" "project" {
   project_id = var.project_id
+
+  depends_on = [
+    module.project_services
+  ]
 }
 
 data "google_client_config" "default" {}
@@ -34,6 +38,7 @@ module "project_services" {
   project_id                  = var.project_id
   disable_services_on_destroy = false
   activate_apis = [
+    "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
     "iam.googleapis.com",
     "container.googleapis.com"
