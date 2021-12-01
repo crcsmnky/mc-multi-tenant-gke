@@ -1,0 +1,12 @@
+steps:
+  - id: 'tf plan'
+    name: 'hashicorp/terraform:1.0.0'
+    entrypoint: 'sh'
+    args: 
+    - '-c'
+    - | 
+        cd "base-infra"
+        echo ""
+        echo "*************** TERRAFOM PLAN ******************"
+        echo "*************************************************"
+        terraform plan -var 'project_id=$PROJECT_ID'  || exit 1

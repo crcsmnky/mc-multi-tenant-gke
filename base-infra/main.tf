@@ -5,6 +5,11 @@ terraform {
       version = "3.77.0"
     }
   }
+
+  backend "gcs" {
+    bucket = "${var.project_id}-tfstate"
+    prefix = "dev"
+  }
 }
 
 data "google_project" "project" {
