@@ -5,8 +5,10 @@ steps:
     args: 
     - '-c'
     - | 
+        set -e
         cd "base-infra"
         echo ""
         echo "*************** TERRAFOM PLAN ******************"
         echo "*************************************************"
-        terraform plan -var 'project_id=$PROJECT_ID'  || exit 1
+        terraform init
+        terraform plan -var 'project_id=$PROJECT_ID'
